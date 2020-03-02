@@ -2,5 +2,6 @@
 /* Index */
 
 module.exports = {
-  forArgs: require("./for-args")
+  forArgs: require("./for-args"),
+  type: require("./type")
 }
