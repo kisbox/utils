@@ -6,9 +6,10 @@
  */
 
 const {
-  any: { isAtom, isArray, isObject },
   constructor: { call }
 } = require("@kisbox/helpers")
+
+const type = require("./type")
 
 const { shift } = call(Array)
 
@@ -56,7 +57,7 @@ forArgs["values"] = function (formals, actuals, handler, current) {
 forArgs["keys:value"] = function (formals, actuals, handler, current) {
   const next = shift(actuals)
   const index = current.length
-  if (isObject(next)) {
+  if (type(next) === "object") {
     Object.entries(next).forEach(([key, value]) => {
       current[index] = key
       current[index + 1] = value
@@ -72,10 +73,10 @@ forArgs["keys:value"] = function (formals, actuals, handler, current) {
 /* Consumes an atom or an array of atoms. */
 forArgs["atoms"] = function (formals, actuals, handler, current) {
   const next = actuals[0]
-  if (isAtom(next)) {
+  if (type.isAtom(next)) {
     // atom => "value"
     forArgs["value"](formals, actuals, handler, current)
-  } else if (isArray(next)) {
+  } else if (type.isArrayLike(next)) {
     // atoms => "values"
     forArgs["values"](formals, actuals, handler, current)
   } else {
@@ -86,15 +87,15 @@ forArgs["atoms"] = function (formals, actuals, handler, current) {
 /* Consumes a key/atom pairs */
 forArgs["keys:atom"] = function (formals, actuals, handler, current) {
   const next = actuals[0]
-  if (isAtom(next)) {
+  if (type.isAtom(next)) {
     // key, atom => "value", "value"
     formals.unshift("value")
     forArgs["value"](formals, actuals, handler, current)
-  } else if (isArray(next)) {
+  } else if (type.isArrayLike(next)) {
     // ...keys, atom => "values", "value"
     formals.unshift("value")
     forArgs["values"](formals, actuals, handler, current)
-  } else if (isObject(next)) {
+  } else if (type(next) === "object") {
     // { ...key: atom } => "keys:value"
     forArgs["keys:value"](formals, actuals, handler, current)
   } else {
