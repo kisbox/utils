@@ -4,7 +4,8 @@
  **/
 
 const {
-  $meta: { $tag }
+  $meta: { $tag },
+  any: { isArrayLike, isAtom }
 } = require("@kisbox/helpers")
 
 const $type = $tag("/type/")
@@ -26,19 +27,8 @@ type.set = function (constructor, typeName) {
 
 /* Special Type Testing */
 
-type.isArrayLike = function (any) {
-  // https://stackoverflow.com/a/55080450
-  return (
-    !!any
-    && typeof any[Symbol.iterator] === "function"
-    && typeof any.length === "number"
-    && typeof any !== "string"
-  )
-}
-
-type.isAtom = function (any) {
-  return any === null || typeof any !== "object" || any instanceof Date
-}
+type.isArrayLike = isArrayLike
+type.isAtom = isAtom
 
 /* Initial Setup */
 
