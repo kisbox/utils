@@ -5,7 +5,7 @@
 
 const {
   $meta: { $tag },
-  any: { isArrayLike, isAtom }
+  any: { isArrayLike, isAtom, isInstance }
 } = require("@kisbox/helpers")
 
 const $type = $tag("/type/")
@@ -29,6 +29,7 @@ type.set = function (constructor, typeName) {
 
 type.isArrayLike = isArrayLike
 type.isAtom = isAtom
+type.isInstance = isInstance
 
 /* Initial Setup */
 
