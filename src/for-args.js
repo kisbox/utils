@@ -48,7 +48,7 @@ forArgs["value"] = function (formals, actuals, handler, current) {
 forArgs["values"] = function (formals, actuals, handler, current) {
   const next = shift(actuals)
   const index = current.length
-  next.forEach(value => {
+  next.forEach((value) => {
     current[index] = value
     forArgs(formals, actuals, handler, current)
   })

@@ -44,7 +44,7 @@ const atoms = [
 describe("type", () => {
   it("returns object type", () => {
     Object.entries(all).forEach(([typeName, examples]) => {
-      examples.forEach(item => {
+      examples.forEach((item) => {
         expect(type(item)).toBe(typeName)
       })
     })
@@ -66,7 +66,7 @@ describe("type", () => {
   describe("isArrayLike()", () => {
     it("returns whether an object is array-like", function () {
       Object.entries(all).forEach(([typeName, examples]) => {
-        examples.forEach(item => {
+        examples.forEach((item) => {
           const expected = typeName === "array"
           expect(type.isArrayLike(item)).toBe(expected)
         })
@@ -78,7 +78,7 @@ describe("type", () => {
   describe("isAtom()", () => {
     it("returns whether an object is an atom", () => {
       Object.entries(all).forEach(([typeName, examples]) => {
-        examples.forEach(item => {
+        examples.forEach((item) => {
           const expected = atoms.includes(typeName)
           expect(type.isAtom(item)).toBe(expected)
         })
