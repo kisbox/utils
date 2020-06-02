@@ -5,9 +5,7 @@
  * @exports forArgs
  */
 
-const {
-  constructor: { call }
-} = require("@kisbox/helpers")
+const { call } = require("@kisbox/helpers")
 
 const type = require("./type")
 

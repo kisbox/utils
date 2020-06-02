@@ -3,10 +3,7 @@
  * A lightweight yet complete alternative to `typeof` based on traits.
  **/
 
-const {
-  $meta: { $tag },
-  any: { isArrayLike, isAtom, isInstance }
-} = require("@kisbox/helpers")
+const { $tag, isArrayLike, isAtom, isInstance } = require("@kisbox/helpers")
 
 const $type = $tag("/type/")
 
