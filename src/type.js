@@ -35,12 +35,15 @@ type.set(Date, "date")
 type.set(Error, "error")
 type.set(Map, "map")
 type.set(Object, "object")
-type.set(Promise, "promise")
 // type.set(Proxy, "proxy")
 type.set(RegExp, "regexp")
 type.set(Set, "set")
 type.set(WeakSet, "weakset")
 type.set(WeakMap, "weakmap")
+
+if (typeof Promise !== "undefined") {
+  type.set(Promise, "promise")
+}
 
 /* Export */
 module.exports = type
