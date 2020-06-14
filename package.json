@@ -1,6 +1,6 @@
 {
   "name": "@kisbox/utils",
-  "version": "1.0.0-beta.10",
+  "version": "1.0.0-beta.11",
   "description": "Various JavaScript utilities Kisbox relies on",
   "author": "MisterTicot <mister.ticot@cosmic.plus>",
   "repository": "github:kisbox/utils",
@@ -33,7 +33,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.10.2",
-    "@kisbox/helpers": "^1.0.0-beta.10",
+    "@kisbox/helpers": "^1.0.0-beta.11",
     "core-js": "^3.6.5"
   }
 }
