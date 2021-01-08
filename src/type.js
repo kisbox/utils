@@ -10,11 +10,11 @@ const $type = $tag("/type/")
 /* Definition */
 
 function type (any) {
-  const primitive = typeof any
-  if (primitive === "object") {
+  const baseType = typeof any
+  if (baseType === "object") {
     return any === null ? "null" : $type.get(any)
   } else {
-    return primitive
+    return baseType
   }
 }
 
